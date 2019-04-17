@@ -23,10 +23,11 @@ app.get('/testRoute2', (req, res) => {
 })
 // 8. create another route to test, now it will return some json
 app.get('/bullsRosterTest', (req, res) => {
-  let user1 = {firstName: 'Michael', lastName: 'Jordan'}
+  let user1 = {userName: 'Alex', tasks: ['sweep patio', 'clean bathroom']}
   let user2 = {firstName: 'Scottie', lastName: 'Pippen'}
   let user3 = {firstName: 'Dennis', lastName: 'Rodman'}
-  res.json([user1, user2, user3])
+  let x = user1.tasks[0]  
+  res.json([user1, user2, user3, x])
 })
 // 3. listen to an especific port and espcify a cb funct
 app.listen(3003, () => {
