@@ -13,16 +13,16 @@ app.get('/', (req, res) => { // so this is localhost:3003
   res.send("'Hello from root :3")
 })
 // 6. create another route to test
-app.get('/users', (req, res) => {
+app.get('/testRoute1', (req, res) => {
   res.send('Nodemon autoupdates when I save this file, I still need to refresh tho, only updates server so I dont have to run server again')
 })
 // 7. create another route to test, now it will return some json
-app.get('/users2', (req, res) => {
+app.get('/testRoute2', (req, res) => {
   let user1 = {firstName: 'Giannis', lastName: 'Antetokounmpo'}
   res.json(user1)
 })
 // 8. create another route to test, now it will return some json
-app.get('/bulls', (req, res) => {
+app.get('/bullsRosterTest', (req, res) => {
   let user1 = {firstName: 'Michael', lastName: 'Jordan'}
   let user2 = {firstName: 'Scottie', lastName: 'Pippen'}
   let user3 = {firstName: 'Dennis', lastName: 'Rodman'}
