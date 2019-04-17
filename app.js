@@ -1,8 +1,10 @@
 // load our app server using express
 // 1. import express library
-const express = require('express');
+const express = require('express')
 // 2. assign a variable to a new instance of express
 const app = express()
+// 11. require mysql
+const mysql = require('mysql')
 // 9. added morgan to get detailed info for get reqs, so everytime I refresh a route in the browser some info will be given to use in the terminal
 const morgan = require('morgan')
 app.use(morgan('short')) // type of req, route, time
