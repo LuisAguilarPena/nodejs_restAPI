@@ -11,7 +11,19 @@ app.get('/', (req, res) => { // so this is localhost:3003
 // 6. create another route to test
 app.get('/users', (req, res) => {
   res.send('Nodemon autoupdates when I save this file, I still need to refresh tho, only updates server so I dont have to run server again')
-}) 
+})
+// 7. create another route to test, now it will return some json
+app.get('/users2', (req, res) => {
+  let user1 = {firstName: 'Giannis', lastName: 'Antetokounmpo'}
+  res.json(user1)
+})
+// 8. create another route to test, now it will return some json
+app.get('/bulls', (req, res) => {
+  let user1 = {firstName: 'Michael', lastName: 'Jordan'}
+  let user2 = {firstName: 'Scottie', lastName: 'Pippen'}
+  let user3 = {firstName: 'Dennis', lastName: 'Rodman'}
+  res.json([user1, user2, user3])
+})
 // 3. listen to an especific port and espcify a cb funct
 app.listen(3003, () => {
   console.log('Server listening on port 3003 :D');
