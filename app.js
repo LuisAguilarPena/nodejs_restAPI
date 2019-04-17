@@ -10,7 +10,7 @@ app.get('/', (req, res) => { // so this is localhost:3003
 })
 // 6. create another route to test
 app.get('/users', (req, res) => {
-  res.send('Nodemon autoupdates when I save this file')
+  res.send('Nodemon autoupdates when I save this file, I still need to refresh tho, only updates server so I dont have to run server again')
 }) 
 // 3. listen to an especific port and espcify a cb funct
 app.listen(3003, () => {
