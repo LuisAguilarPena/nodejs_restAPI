@@ -23,6 +23,6 @@ CREATE TABLE users (
  *    mysql -u root < schema.sql
 */
 
-INSERT INTO transactions (id, firstName, lastName) VALUES (1, "Michael", "Jordan");
-INSERT INTO transactions (id, firstName, lastName) VALUES (2, "Scottie", "Pippen");
-INSERT INTO transactions (id, firstName, lastName) VALUES (3, "Dennis", "Rodman");
+INSERT INTO lbta_mysql (id, firstName, lastName) VALUES (1, "Michael", "Jordan");
+INSERT INTO lbta_mysql (id, firstName, lastName) VALUES (2, "Scottie", "Pippen");
+INSERT INTO lbta_mysql (id, firstName, lastName) VALUES (3, "Dennis", "Rodman");
