@@ -26,3 +26,5 @@ CREATE TABLE users (
 INSERT INTO users (id, firstName, lastName) VALUES (1, "Michael", "Jordan");
 INSERT INTO users (id, firstName, lastName) VALUES (2, "Scottie", "Pippen");
 INSERT INTO users (id, firstName, lastName) VALUES (3, "Dennis", "Rodman");
+
+/* this how you set up in your local computer a datbase, you can access mysql in terminal and check that this information is actually there */
