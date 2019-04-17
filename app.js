@@ -12,6 +12,15 @@ app.use(express.static('./public'))
 // 9. ...
 app.use(morgan('short')) // type of req, route, time
 //app.use(morgan('combined')) // more detailed info
+// 13. getConnection to reuse easier
+getConnection = () =>  {
+  return mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123',
+    database: 'lbta_mysql'
+  })
+}
 // 4. app.get and / to specify the root, cb funct to specify how you wanna handle the request with 2 parameters the actual request that comes from your browser and the response you want to give to this particular get request 
 app.get('/', (req, res) => { // so this is localhost:3003
   console.log('Responding to root route');
@@ -78,12 +87,7 @@ app.get('/users/:id', (req, res) => {
 }) 
 // route to get all users from database
 app.get('/users', (req, res) => {
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123',
-    database: 'lbta_mysql'
-  })
+  const connection = getConnection()
   connection.query("SELECT * FROM users", (err, rows, fields) => { res.json(rows) })
 })
 // 3. listen to an especific port and espcify a cb funct
