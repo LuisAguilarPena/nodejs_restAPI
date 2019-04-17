@@ -19,7 +19,7 @@ app.get('/testRoute1', (req, res) => {
   res.send('Nodemon autoupdates when I save this file, I still need to refresh tho, only updates server so I dont have to run server again')
 })
 // 7. create another route to test, now it will return some json
-app.get('/users', (req, res) => {
+app.get('/usersTest', (req, res) => {
   let user1 = {firstName: 'Giannis', lastName: 'Antetokounmpo'}
   let user2 = {firstName: 'Scottie', lastName: 'Pippen'}
   let user3 = {firstName: 'Dennis', lastName: 'Rodman'}
@@ -35,11 +35,39 @@ app.get('/bullsRosterTest', (req, res) => {
   res.json([user1, user2, user3, x])
 })
 // 10. specify a new route that is going to be connected to our database, the route is going to catch the id using the wildcard syntax
-app.get('/user/:id', (req, res) => {
+app.get('/users/:id', (req, res) => {
   console.log(`Fetching user with id: ${req.params.id}`);
-  res.end()
+  // create a variable that will refer to a mysql property/method, in this case CreateConnection this will establish a connection with the database
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123',
+    database: 'lbta_mysql'
+  })
+  // execute a sql query to pull down  some data from my data base with the query method that is now attached to connection
+  // query takes 2 params the actual query and a cb to execute when query is done, the cb has 3 param err, results, fields 
+  // connection.query("SELECT * FROM users", (err, rows, fields) => { res.json(rows) }) will render all contents from db
+  const queryString = "SELECT * FROM users WHERE id = ?" // whatever we type inside [ ] is going to be the id
+  const userId = req.params.id
+  
+  connection.query(queryString, [userId], (err, rows, fields) => {
+    console.log('I think we fetched users correctly');
+    res.json(rows)
+  })
+
+  // res.end() we dont want to inmediately end res due to the query
   //console.log(req, '(-_-)');
 }) 
+// route to get all users from database
+app.get('/users', (req, res) => {
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123',
+    database: 'lbta_mysql'
+  })
+  connection.query("SELECT * FROM users", (err, rows, fields) => { res.json(rows) })
+})
 // 3. listen to an especific port and espcify a cb funct
 app.listen(3003, () => {
   console.log('Server listening on port 3003 :D');
