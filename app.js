@@ -7,6 +7,10 @@ const app = express()
 const mysql = require('mysql')
 // 9. added morgan to get detailed info for get reqs, so everytime I refresh a route in the browser some info will be given to use in the terminal
 const morgan = require('morgan')
+// 14. bodyparser will be required to process requests easier
+const bodyparser = require('body-parser')
+// 14. middleware to do the before mention
+app.use(bodyparser.urlencoded({extended: false}))
 // 12. Created static file in the form of file.html and serve it with:
 app.use(express.static('./public'))
 // 9. ...
@@ -21,6 +25,11 @@ getConnection = () =>  {
     database: 'lbta_mysql'
   })
 }
+// 14. create the post request  
+app.post('/users', (req,res) => {
+  console.log(`First name is: ${req.body.createFirstName}`)
+  res.end();
+})
 // 4. app.get and / to specify the root, cb funct to specify how you wanna handle the request with 2 parameters the actual request that comes from your browser and the response you want to give to this particular get request 
 app.get('/', (req, res) => { // so this is localhost:3003
   console.log('Responding to root route');
