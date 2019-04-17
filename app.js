@@ -59,9 +59,17 @@ app.get('/users/:id', (req, res) => {
       return
     }
     console.log('I think we fetched users correctly');
+  // 11. custom formatting for the json output
+  /*const users = rows.map(row => {
+    return {abc: '123'} // will return a json like -> [{abc: "123"}]
+  })    
+    res.json(users)*/
+  /*const users = rows.map(row => {
+      return {primerNombre: row.firstName, segundoNombre: row.lastName}
+    })    
+      res.json(users)*/
     res.json(rows)
   })
-
   // res.end() we dont want to inmediately end res due to the query
   //console.log(req, '(-_-)');
 }) 
