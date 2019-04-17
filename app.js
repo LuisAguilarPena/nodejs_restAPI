@@ -3,6 +3,10 @@
 const express = require('express');
 // 2. assign a variable to a new instance of express
 const app = express()
+// 9. added morgan to get detailed info for get reqs, so everytime I refresh a route in the browser some info will be given to use in the terminal
+const morgan = require('morgan')
+app.use(morgan('short')) // type of req, route, time
+app.use(morgan('combined')) // more detailed info
 // 4. app.get and / to especify the root, cb funct to especify how you wanna handle the request with 2 parameters the actual request that comes from your browser and the response you want to give to this particular get request 
 app.get('/', (req, res) => { // so this is localhost:3003
   console.log('Responding to root route');
