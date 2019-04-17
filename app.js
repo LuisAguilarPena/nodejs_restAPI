@@ -7,6 +7,9 @@ const app = express()
 const mysql = require('mysql')
 // 9. added morgan to get detailed info for get reqs, so everytime I refresh a route in the browser some info will be given to use in the terminal
 const morgan = require('morgan')
+// 12. Created static file in the form of file.html and serve it with:
+app.use(express.static('./public'))
+// 9. ...
 app.use(morgan('short')) // type of req, route, time
 //app.use(morgan('combined')) // more detailed info
 // 4. app.get and / to specify the root, cb funct to specify how you wanna handle the request with 2 parameters the actual request that comes from your browser and the response you want to give to this particular get request 
@@ -90,3 +93,4 @@ app.listen(3003, () => {
 // if you run node app.js and go to localhost:3003 you will get a Cannot GET / that is because we have not especified any root route, do that above the listen
 
 // 5. lets add nodemon to avoid having to refresh our server (run node app.js again and again...) everytime we make changes, $ sudo npm i -g nodemon
+// When creating stuff often times is done with a post req handler
