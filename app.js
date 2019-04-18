@@ -26,9 +26,22 @@ getConnection = () =>  {
   })
 }
 // 14. create the post request  
-app.post('/users', (req,res) => {
+app.post('/userCreated', (req,res) => {
   console.log(`First name is: ${req.body.createFirstName}`)
-  res.end();
+  // from the name atrib of input tags
+  const firstName = req.body.createFirstName
+  const lastName = req.body.createLastName
+
+  const queryString = "INSERT INTO users (firstName, lastName) VALUES (?, ?)"
+  getConnection().query(queryString, [firstName, lastName], (err, results, fields) => {
+    if (err) {
+      console.log(`Failed to insert new user: ${err}`);
+      res.sendStatus(500)
+      return
+    }
+    console.log(`Inserted new user with ID: ${results}`);
+    res.end()
+  })
 })
 // 4. app.get and / to specify the root, cb funct to specify how you wanna handle the request with 2 parameters the actual request that comes from your browser and the response you want to give to this particular get request 
 app.get('/', (req, res) => { // so this is localhost:3003
