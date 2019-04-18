@@ -43,5 +43,6 @@ userRoutes.post('/userCreated', (req,res) => {
     res.redirect('/')
   })
 })
+// create a way to delete users DELETE FROM users WHERE id=22
 
 module.exports = userRoutes
