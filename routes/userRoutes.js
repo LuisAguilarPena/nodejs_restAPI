@@ -44,5 +44,23 @@ userRoutes.post('/userCreated', (req,res) => {
   })
 })
 // create a way to delete users DELETE FROM users WHERE id=22
+userRoutes.get('/userDeleted', (req, res) => {
+  console.log(`First name is: ${req.query.deleteFirstName}`)
+  console.log(`Last name is: ${req.query.deleteLastName}`)
+
+  const firstName = req.query.deleteFirstName
+  const lastName = req.query.deleteLastName
+
+  const queryString = "DELETE FROM users WHERE (firstName, lastName) = (?, ?)"
+  getConnection().query(queryString, [firstName, lastName] , (err, results, fields) => {
+    if (err) {
+      console.log(`Failed to delete new user: ${err}`);
+      res.sendStatus(500)
+      return
+    }
+    console.log(`Deleted user: ${firstName} ${lastName}`);
+    res.redirect('/')
+  })
+})
 
 module.exports = userRoutes
