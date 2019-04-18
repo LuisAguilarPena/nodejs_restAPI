@@ -40,8 +40,8 @@ app.post('/userCreated', (req,res) => {
       return
     }
     console.log(`Inserted new user with ID: ${results.insertId}`);
-    // most likely here redirect code
-    res.end()
+    //redirect to root
+    res.redirect('/')
   })
 })
 // 4. app.get and / to specify the root, cb funct to specify how you wanna handle the request with 2 parameters the actual request that comes from your browser and the response you want to give to this particular get request 
