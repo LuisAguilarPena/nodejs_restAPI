@@ -39,7 +39,7 @@ app.post('/userCreated', (req,res) => {
       res.sendStatus(500)
       return
     }
-    console.log(`Inserted new user with ID: ${results}`);
+    console.log(`Inserted new user with ID: ${results.insertId}`);
     // most likely here redirect code
     res.end()
   })
