@@ -12,7 +12,7 @@ userRoutes.get('/users', (req, res) => {
 // Displays an specific user in database
 userRoutes.get('/users/:id', (req, res) => {
   console.log(`Fetching user with id: ${req.params.id}`);
-  const queryString = "SELECT * FROM users WHERE id = ?" // whatever we type inside [ ] is going to be the id
+  const queryString = "SELECT * FROM users WHERE id = ?" // whatever we type inside [ ] is going to be the id, we can change the query a little bit in order to get users by other columns
   const userId = req.params.id
   getConnection().query(queryString, [userId], (err, rows, fields) => {
     if(err) {
