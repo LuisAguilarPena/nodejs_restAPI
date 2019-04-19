@@ -19,7 +19,8 @@ app.get('/', (req, res) => {
   res.send("'Hello from root :3")
 })
 
+const PORT = process.env.PORT || 3003 
 // listening on port 3003
-app.listen(3003, () => {
-  console.log('Server listening on port 3003 :D');
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT} :D`);
 })
